@@ -2,3 +2,7 @@
   flex-shrink: 0;
   flex-grow: 1;
 }
+
+.popup_type_delete-card .popup__content {
+  min-height: 0;
+}

@@ -1,0 +1,24 @@
+.popup__button_disabled {
+  opacity: 0.2;
+  color: #000; /* Черный текст */
+  border: 1px solid #000; /* Черная обводка */
+  background-color: transparent;
+}
+
+.popup__input_type_error {
+  border-bottom: 1px solid #FF0000;
+}
+
+.popup__error_visible {
+  display: block;
+  color: #FF0000;
+  margin: 0;
+  font-family:'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+}
+ 
+.popup__button_disabled:hover {
+  background: transparent;
+  cursor: not-allowed;
+}

@@ -1,0 +1,7 @@
+.popup_type_new-avatar .popup__content {
+    min-height: 0;
+}
+
+form[name="new-avatar"] {
+    margin-top: 38px;
+}

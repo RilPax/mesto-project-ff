@@ -18,6 +18,8 @@ export function openPopup(popup) {
 
   document.addEventListener('keydown', handleEscClose);
   popup.addEventListener('mousedown', handleOverlayClose);
+  
+  return true
 }
 
 export function closePopup(popup) {

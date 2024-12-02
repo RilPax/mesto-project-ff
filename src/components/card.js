@@ -1,4 +1,4 @@
-export function createCard(item, { deleteCard, handleLike, handleImageClick }) {
+export function createCard(item, { deleteCard, handleLike, handleImageClick }, userId) {
   const card = document.querySelector('#card-template').content.querySelector('.card').cloneNode(true);
   card.querySelector('.card__title').textContent = item.name;
   const cardImage = card.querySelector('.card__image');
@@ -7,13 +7,17 @@ export function createCard(item, { deleteCard, handleLike, handleImageClick }) {
 
   const deleteButton = card.querySelector('.card__delete-button');
   deleteButton.addEventListener('click', () => {
-    deleteCard(card);
+    deleteCard(card, item._id);
   });
 
   const likeBtn = card.querySelector('.card__like-button');
   likeBtn.addEventListener('click', (evt) => {
-    handleLike(evt);
+    handleLike(evt, item);
   });
+
+  if (item.likes.some(like => like._id === userId)) {
+    likeBtn.classList.add('card__like-button_is-active');
+  }
 
   cardImage.addEventListener('click', () => {
     handleImageClick(item.link, item.name);
