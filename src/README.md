@@ -3,6 +3,6 @@
 https://github.com/RilPax/mesto-project-ff.git
 
 
-# Сайт mesti-project
+# Сайт mesto-project
 
 https://rilpax.github.io/mesto-project-ff/
