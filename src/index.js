@@ -1,7 +1,7 @@
 import { fetchCards } from './components/cards.js';
 import { createCard, handleLike } from './components/card.js';
 import { openPopup, closePopup } from './components/modal.js';
-import { deleteApi, profileInfoRequest, editProfileData, editProfileAvatar, requestPostCard, setLike } from './components/api.js'
+import { deleteApi, profileInfoRequest, editProfileData, editProfileAvatar, requestPostCard, setLike, getResponseData } from './components/api.js'
 
 import './index.css';
 
@@ -10,13 +10,6 @@ const baseUrl = {
   link: 'https://nomoreparties.co/v1/wff-cohort-27',
   token: '2f9bc796-ad38-4ea7-a369-376b91155c43',
   tipeOfContent: 'application/json'
-}
-
-function getResponseData(res) {
-  if (!res.ok) {
-    return Promise.reject(`Ошибка: ${res.status}`);
-  }
-  return res.json();
 }
 
 
@@ -94,7 +87,7 @@ function addSingleCard(card, userId, container) {
     return; 
   }
 
-  const cardElement = createCard(card, { deleteCard, handleLike, handleImageClick }, userId);
+  const cardElement = createCard(card, { deleteCard, handleLike, handleImageClick, getResponseData, setLike  }, userId, baseUrl);
 
   container.prepend(cardElement);
 
@@ -179,8 +172,6 @@ editForm.addEventListener('submit', function(evt) {
     .then((profile) => {
       profileTitle.textContent = profile.name
       profileDescription.textContent = profile.about
-    })
-    .then(() => {
       closePopup(editPopup)
     })
     .catch((err) =>{
