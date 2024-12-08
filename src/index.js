@@ -140,20 +140,6 @@ const newAvatar = editAvatarPopup.querySelector('.popup__input_type_url')
 const ImageInfo = imagePopup.querySelector('.popup__image');
 const imageName = imagePopup.querySelector('.popup__caption');
 
-editProfileBtn.addEventListener('click', () => {
-  openPopup(editPopup);
-  editName.value = profileTitle.textContent;
-  editDescription.value = profileDescription.textContent;
-});
-
-addCardBtn.addEventListener('click', () => {
-  openPopup(addPopup);
-});
-
-profileAvatar.addEventListener('click', () => {
-  openPopup(addNewAvatarPopup)
-})
-
 function toggleLoadingPage(form, bull) {
   if(!bull) {
     form.querySelector('.popup__button').textContent = 'Сохранение...'
@@ -253,16 +239,27 @@ const validationConfig = {
 
 const pattern = /^[a-zA-Zа-яА-ЯёЁ\s\-]+$/;
 
-import { clearPopupValidation, enableValidation, updateButtonState } from './components/validation.js';
+import { clearPopupValidation, enableValidation, updateButtonState, ClearFormsValue } from './components/validation.js';
 
 editProfileBtn.addEventListener('click', () => {
+  ClearFormsValue(editForm, validationConfig)
+  openPopup(editPopup);
   clearPopupValidation(editPopup, validationConfig);
   updateButtonState(editForm.querySelector(validationConfig.submitButtonSelector), false, validationConfig);
 });
 
 addCardBtn.addEventListener('click', () => {
+  ClearFormsValue(addForm, validationConfig)
+  openPopup(addPopup);
   clearPopupValidation(addPopup, validationConfig);
   updateButtonState(addForm.querySelector(validationConfig.submitButtonSelector), false, validationConfig);
 });
+
+profileAvatar.addEventListener('click', () => {
+  ClearFormsValue(editAvatarPopup, validationConfig)
+  openPopup(addNewAvatarPopup)
+  clearPopupValidation(addNewAvatarPopup, validationConfig);
+  updateButtonState(editAvatarPopup.querySelector(validationConfig.submitButtonSelector), false, validationConfig);
+})
 
 enableValidation(validationConfig, pattern)

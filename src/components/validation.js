@@ -79,20 +79,6 @@ function checkInputValidity(inputElement, pattern, validationConfig) {
   }
 }
 
-function showInputError(inputElement, errorMessage, validationConfig) {
-  const errorElement = inputElement.nextElementSibling;
-  inputElement.classList.add(validationConfig.inputErrorClass);
-  errorElement.textContent = errorMessage;
-  errorElement.classList.add(validationConfig.errorClass);
-};
-
-function hideInputError(inputElement, validationConfig) {
-  const errorElement = inputElement.nextElementSibling;
-  inputElement.classList.remove(validationConfig.inputErrorClass);
-  errorElement.classList.remove(validationConfig.errorClass);
-  errorElement.textContent = '';
-};
-
 export function clearPopupValidation(formSelector, validationConfig) {
   const inputList = Array.from(formSelector.querySelectorAll(validationConfig.inputSelector));
   const button = formSelector.querySelector(validationConfig.submitButtonSelector);
@@ -115,4 +101,13 @@ export function updateButtonState(button, isValid, validationConfig) {
     button.classList.add(validationConfig.noHoverButton);
     button.disabled = true;
   }
+}
+
+export function ClearFormsValue(form, validationConfig) {
+  const formInputs = Array.from(form.querySelectorAll(validationConfig.inputSelector))
+  formInputs.forEach((inputItem) => {
+    if(inputItem.classList.contains('popup__input')) {
+      inputItem.value = ''
+    }
+  })
 }
