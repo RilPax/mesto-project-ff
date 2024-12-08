@@ -60,17 +60,12 @@ function hasInvalidInput(inputList, pattern) {
 
 
 function checkInputValidity(inputElement, pattern, validationConfig) {
-  if (inputElement.type === 'text' && inputElement.value.trim() === '') {
-    toggleInputError(inputElement, inputElement.nextElementSibling, 'Заполните это поле', true, validationConfig);
-    return false;
-  }
-
-  if (!inputElement.validity.valid) {
-    toggleInputError(inputElement, inputElement.nextElementSibling, inputElement.validationMessage, true, validationConfig);
+  if (!(inputElement.hasAttribute('type') && inputElement.getAttribute('type') === 'url') && !pattern.test(inputElement.value)) {
+    toggleInputError(inputElement, inputElement.nextElementSibling, inputElement.dataset.errorMessage, true, validationConfig);
     return false;
   } 
-  else if (!(inputElement.hasAttribute('type') && inputElement.getAttribute('type') === 'url') && !pattern.test(inputElement.value)) {
-    toggleInputError(inputElement, inputElement.nextElementSibling, inputElement.dataset.errorMessage, true, validationConfig);
+  else if (!inputElement.validity.valid) {
+    toggleInputError(inputElement, inputElement.nextElementSibling, inputElement.validationMessage, true, validationConfig);
     return false;
   } 
   else {
