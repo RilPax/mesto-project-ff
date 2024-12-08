@@ -38,9 +38,9 @@
       <h3 class="popup__title">Редактировать профиль</h3>
       <form class="popup__form" name="edit-profile" novalidate>
         <input type="text" minlength="2" maxlength="40" name="name" class="popup__input popup__input_type_name" placeholder="Имя" data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы" required>
-        <p class="name-error popup__error_visible" style="display: none;"></p>
-        <input type="text" minlength="2" maxlength="200" name="description" class="popup__input popup__input_type_description" data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы" required>
-        <p class="description-error popup__error_visible" style="display: none;"></p>
+        <p class="name-error popup__error_visible" ></p>
+        <input type="text" minlength="2" maxlength="200" name="description" class="popup__input popup__input_type_description" placeholder="О себе" data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы" required>
+        <p class="description-error popup__error_visible" ></p>
         <button type="submit" class="button popup__button" id="profile-edit-button">Сохранить</button>
       </form>
     </div>
@@ -50,10 +50,10 @@
       <button type="button" class="popup__close"></button>
       <h3 class="popup__title">Новое место</h3>
       <form class="popup__form" name="new-place" novalidate>
-        <input type="text" name="place-name" class="popup__input popup__input_type_card-name" placeholder="Название" data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы" required>
-        <p class="place-name-error popup__error_visible" style="display: none;"></p>
+        <input type="text" minlength="2" maxlength="30" name="place-name" class="popup__input popup__input_type_card-name" placeholder="Название" data-error-message="Разрешены только латинские, кириллические буквы, знаки дефиса и пробелы" required>
+        <p class="place-name-error popup__error_visible" ></p>
         <input type="url" name="link" class="popup__input popup__input_type_url" placeholder="Ссылка на картинку" required>
-        <p class="link-error popup__error_visible" style="display: none;"></p>
+        <p class="link-error popup__error_visible" ></p>
         <button type="submit" class="button popup__button" id="new-place-button">Сохранить</button>
       </form>
     </div>
@@ -72,7 +72,7 @@
     <h3 class="popup__title">Обновить аватар</h3>
     <form class="popup__form" name="new-avatar" novalidate>
       <input type="url" name="link" class="popup__input popup__input_type_url" placeholder="Ссылка на картинку" required>
-      <p class="link-error popup__error_visible" style="display: none;"></p>
+      <p class="link-error popup__error_visible"></p>
       <button type="submit" class="button popup__button" id="new-place-button">Сохранить</button>
     </form>
   </div>
